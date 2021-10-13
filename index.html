@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Statistika: Pertemuan 02</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="oleh Riana Hadiana" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
+    <link href="libs/tachyons-4.12.0/tachyons.min.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/xaringanExtra-webcam-0.0.1/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="libs/mark.js-8.11.1/mark.min.js"></script>
+    <link href="libs/xaringanExtra-search-0.0.1/search.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-search-0.0.1/search.js"></script>
+    <script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch({"position":"bottom-left","caseSensitive":false,"showIcon":true,"autoSearch":true}) })</script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Statistika: Pertemuan 02
+## Statistika Deskripsi dan Eksplorasi
+### oleh Riana Hadiana
+### Universitas Serang Raya
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(Unsera.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+
+
+
+.pull.center[
+# **Outline**
+]
+
+---
+
+.pull-left[
+
+![](gb_01.jpg)
+
+]
+
+--
+.pull-right[
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+# Bagaiamana cara .red[**penyajian**] datanya?
+
+
+]
+
+---
+
+.pull.center[
+# **Statistika Deskripsi dan Eksplorasi**
+]
+
+### Merupakan teknik .red[**penyajian**] dan .red[**peringkasan**] data sehingga menjadi informasi yang .purple[**mudah dipahami**]
+
+.pull-left[
+.pull.center[
+# Teknik Penyajian
+## 1. Tabel
+## 2. Grafik
+]
+]
+
+.pull-right[
+.pull.center[
+# Peringkasan Data
+## 1. Ukuran Pemusatan
+## 2. Ukuran Penyebaran
+]
+]
+
+---
+
+.pull-left[
+&lt;br&gt;&lt;br&gt;
+![](gb_02.webp)
+
+]
+
+.pull-right[
+
+&lt;br&gt;&lt;br&gt;
+# **Outline**
+
+# 1. Penyajian Data (Tabel)
+# 2. Penyajian Data (Grafik)
+
+]
+
+---
+
+.pull.center[
+# **Penyajian Data**
+]
+
+.pull-left[
+# Tabel
+- Data Kualitatif (peubah kategorik)
+- Data Kuantitatif (peubah numerik)
+]
+
+.pull-right[
+#Grafik/Gambar
+- Data Kualitatif (peubah kategorik)
+  - Pie Chart
+  - Bar Chart
+- Data Kuantitatif
+  - Histogram
+  - Diagram Kotak Garis (Box Plot)
+
+]
+
+---
+
+.pull-left[
+![](gb_01.jpg)
+]
+
+.pull-right[
+#**Penyajian Tabel**
+Peubah **Jenis Kelamin** dan **Agama** merupakan peubah **kategorik**.
+
+Penyajian data untuk peubah kategorik bisa menggunakan **Tabel Frekuensi**
+
+**Tabel Frekuensi**
+- Menyajikan data kualitatif (kategorik) dalam bentuk **frekuensi**
+- Jika jumlah data mencukupi, tampilkan juga **persentase**-nya
+]
+
+---
+
+.pull-left[
+![](gb_01.jpg)
+]
+
+.pull-right[
+
+## **Tabel Frekuensi**
+
+Rekapitulasi berdasarkan **Agama**
+
+![](gb_03.jpg)
+&lt;br&gt;&lt;br&gt;
+
+
+Rekapitulasi berdasarkan **Jenis Kelamin**
+
+![](gb_04.jpg)
+]
+
+---
+
+.pull-left[
+![](gb_01.jpg)
+]
+
+.pull-right[
+
+##Bagaimana jika peubah **Agama** dan **Jenis Kelamin** dijadikan 1 tabel?
+
+# Tabel Kontingensi
+
+&gt;### Digunakan untuk melihat distribusi dari dua data kategorik atau lebih
+
+
+![](gb_05.jpg)
+
+]
+
+---
+
+.pull-left[
+![](gb_01.jpg)
+]
+
+.pull-right[
+#**Penyajian Tabel**
+Peubah **Tinggi** dan **Berat** merupakan peubah kuantitatif (**numerik**).
+
+Penyajian data untuk peubah numerik bisa menggunakan **Tabel Distribusi Frekuensi Kelompok**
+
+**Tabel Distribusi Frekuensi Kelompok**
+- Digunakan untuk membuat pengelompokkan data kuantitatif
+- Isi tabel terdiri dari selang kelas, frekuensi masing-masing kelas, frekuensi relatif masing-masing kelas
+
+]
+
+---
+
+.pull-left[
+![](gb_01.jpg)
+]
+
+.pull-right[
+## **Cara membuat tabel distribusi frekuensi kelompok**
+
+1. Tentukan jumlah kelas (Sturgis' rule ): `\(k=3.3 \log(n)+1\)`
+1. Tentukan lebar kelas: `\(l=(X_{max}-X_{min})/k\)`
+1. Tentukan batas atas dan batas bawah dari masing-masing kelas
+1. Tentukan tepi batas kelas
+1. List jumlah pengamatan pada masing-masing kelas
+1. Frekuensi Relatif : cari proporsi dari masing-masing kelas
+
+]
+
+---
+
+.pull-left[
+![](gb_01.jpg)
+]
+
+.pull-right[
+## **Tabel distribusi frekuensi kelompok untuk peubah .red[Berat]**
+
+Jumlah Kelas:
+`$$\begin{align*}
+k&amp;=3.3 \log(n)+1 \\
+&amp;=3.3 \log(20)+1 \\
+&amp;=5.29 \approx 6
+\end{align*}$$`
+
+Lebar Kelas:
+
+`$$\begin{align*}
+l&amp;=(X_{max}-X_{min})/k  \\
+&amp;=(58-40)/6             \\
+&amp;=3\approx 4
+\end{align*}$$`
+
+]
+
+---
+
+.pull.center[
+
+## **Tabel distribusi frekuensi kelompok untuk peubah .red[Berat]**
+
+&lt;br&gt;
+
+![](gb_06.jpg)
+
+]
+
+---
+
+.pull.center[
+
+## **Tabel distribusi frekuensi kelompok untuk peubah .red[Berat]**
+
+&lt;br&gt;
+
+![](gb_07.jpg)
+
+]
+
+---
+
+.pull.center[
+
+## **Tabel distribusi frekuensi kelompok untuk peubah .red[Berat]**
+
+&lt;br&gt;
+
+![](gb_08.jpg)
+
+]
+
+---
+
+.pull.center[
+
+## **Tabel distribusi frekuensi kelompok untuk peubah .red[Berat]**
+
+&lt;br&gt;
+
+![](gb_09.jpg)
+
+]
+
+---
+
+.pull.center[
+
+## **Tabel distribusi frekuensi kelompok untuk peubah .red[Berat]**
+
+&lt;br&gt;
+
+![](gb_10.jpg)
+
+]
+
+---
+
+class: middle, center
+
+# **Tugas Mandiri 1**
+# **Buatlah tabel distribusi frekuensi kelompok untuk peubah .red[Tinggi]**
+
+---
+
+class: middle, center
+
+# Bagaimana jika ingin menyajikan tabel yang berisi peubah .red[**kualitatif**] dan .red[**kuantitatif**] secara bersama-sama?
+
+---
+
+### Peubah kualitatif dan kuantitatif bisa disajikan secara bersama-sama menggunakan **Tabel Ringkasan**
+
+- Menyajikan RINGKASAN STATISTIK yang memungkinkan.
+- Ringkasan statistik yang digunakan adalah jumlah data, rataan (*mean*), standar deviasi, minimum, dan maksimum.
+- Catatan: Hindarkan pemberian banyak informasi dalam kapasitas
+yang terbatas
+
+![](gb_11.jpg)
+
+---
+
+class: middle, center, inverse
+
+# **Penyajian Grafik**
+
+---
+
+class: middle, center
+
+background-image: url("gb_12.jpg")
+
+---
+
+.bg-washed-green.b--dark-green.ba.bw2.br3.shadow-5.ph4.mt5[
+
+## Anda mendengar `\(\implies\)` tahu
+.pull.center[
+## Anda membaca `\(\implies\)` paham]
+.pull.right[
+## .red[Anda melihat] `\(\implies\)` .red[percaya]
+]
+]
+
+--
+
+.pull.left[
+- Grafik mengungkapkan banyak informasi dibandingkan dengan seribu kata-kata&lt;br&gt;&lt;br&gt;
+- Grafik yang disajikan harus dapat dimengerti oleh pembaca&lt;br&gt;&lt;br&gt;
+- Jika pembaca mempertanyakan apa maksudnya maka grafik yang disajikan “belum baik”&lt;br&gt;&lt;br&gt;
+- Gunakan “nalar” dalam membuat grafik.
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+]
+
+.pull-left[
+
+## Pie Chart (Diagram Lingkaran)
+
+- ### Digunakan untuk menampilkan .red[**data kategorik**] khususnya .red[**data nominal**]
+- ### Menunjukkan distribusi data dalam group (total 100%)
+- ### Disajikan dalam bentuk %, terkadang perlu menyajikan pula jumlah data
+
+]
+
+.pull-right[
+Data pada peubah **Agama** merupakan data kategorik (nominal), maka penyajian datanya bisa menggunakan *Pie Chart* (Diagram Lingkaran)
+
+![](gb_13.jpg)
+Peubah *Jenis Kelamin* juga bisa disajikan menggunakan diagram lingkaran karena berupa data kategorik (nominal).
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+]
+
+.pull-left[
+## Bar Chart (Diagram Batang)
+
+- ### Berguna untuk menampilkan data kategorik
+- ### Dapat pula digunakan untuk menyajikan data dari tabel kontingensi / tabel ringkasan data
+
+]
+
+.pull-right[
+
+Data pada peubah **Agama** merupakan data kategorik (nominal), maka penyajian datanya bisa menggunakan *Bar Chart* (Diagram Batang)
+
+![](gb_14.jpg)
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+
+![](gb_15.jpg)
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+]
+
+## Peubah dengan tipe data numerik tidak bisa disajikan menggunakan Diagram Lingkaran ataupun Diagram Batang. Mengapa?
+
+--
+
+## Peubah dengan tipe data numerik bisa disajikan menggunakan:
+
+.pull-left[
+- ## Histogram
+- ## Diagram Kotak Garis (Box Plot)
+]
+
+--
+
+.pull-right[
+- ## .green[Diagram Titik (Dot Plots)]
+- ## .green[Diagram Dahan Daun (Stem and Leaf)]
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+
+
+]
+
+## Histogram
+- ###Sebuah grafik dari suatu sebaran frekuensi
+
+--
+
+- ###Bisa distribusi dari frekuensi-nya atau frekuensi relatif-nya
+
+--
+
+- ###Digunakan untuk melihat distribusi dari data:
+
+--
+    - ###Melihat ukuran penyebaran dan ukuran pemusatan data
+    - ###Melihat adanya data outlier
+    - ###Mendeteksi ada bimodus/tidak
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+]
+
+### Histogram: .blue[Dapat digunakan untuk menentukan sebaran data]
+
+.pull.center[
+![](gb_17.jpg)
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+
+![](gb_18.JPG)
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
+Histogram untuk peubah **Berat**
+
+![](gb_16.jpg)
+]
+
+---
+
+class: middle, center
+
+# **Tugas Mandiri 2**
+# **Buatlah histogram untuk peubah .red[Tinggi]**
+
+---
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
