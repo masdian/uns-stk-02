@@ -54,12 +54,6 @@ xaringanExtra::use_webcam()
 xaringanExtra::use_search(show_icon = TRUE)
 ```
 
-.pull.center[
-# **Outline**
-]
-
----
-
 .pull-left[
 
 ![](gb_01.jpg)
