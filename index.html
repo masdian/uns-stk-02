@@ -42,39 +42,7 @@ class: center, middle, inverse, title-slide
 
 
 
-<div>
-<style type="text/css">.xaringan-extra-logo {
-width: 110px;
-height: 128px;
-z-index: 0;
-background-image: url(Unsera.png);
-background-size: contain;
-background-repeat: no-repeat;
-position: absolute;
-top:1em;right:1em;
-}
-</style>
-<script>(function () {
-  let tries = 0
-  function addLogo () {
-    if (typeof slideshow === 'undefined') {
-      tries += 1
-      if (tries < 10) {
-        setTimeout(addLogo, 100)
-      }
-    } else {
-      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
-        .forEach(function (slide) {
-          const logo = document.createElement('div')
-          logo.classList = 'xaringan-extra-logo'
-          logo.href = null
-          slide.appendChild(logo)
-        })
-    }
-  }
-  document.addEventListener('DOMContentLoaded', addLogo)
-})()</script>
-</div>
+preserve4c5a175bddab9443
 
 
 
@@ -413,6 +381,8 @@ background-image: url("gb_12.jpg")
 
 ]
 
+--
+
 .pull-right[
 Data pada peubah **Agama** merupakan data kategorik (nominal), maka penyajian datanya bisa menggunakan *Pie Chart* (Diagram Lingkaran)
 
@@ -433,6 +403,8 @@ Peubah *Jenis Kelamin* juga bisa disajikan menggunakan diagram lingkaran karena 
 - ### Dapat pula digunakan untuk menyajikan data dari tabel kontingensi / tabel ringkasan data
 
 ]
+
+--
 
 .pull-right[
 
@@ -521,6 +493,14 @@ Data pada peubah **Agama** merupakan data kategorik (nominal), maka penyajian da
 
 .pull.center[
 # **Penyajian Grafik**
+
+![](gb_19.JPG)
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
 Histogram untuk peubah **Berat**
 
 ![](gb_16.jpg)
@@ -535,7 +515,22 @@ class: middle, center
 
 ---
 
+.pull.center[
+![](gb_20.jpg)
+]
 
+---
+
+.pull.center[
+![](gb_21.jpg)
+]
+
+---
+
+class: inverse, middle, center
+
+# .green[**Thank You**]
+# .purple[**See you next week**]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -636,6 +631,31 @@ slideshow._releaseMath = function(el) {
     if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
       text = code.textContent;
       if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
+(.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
           /^\$\$(.|\s)+\$\$$/.test(text) ||
           /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
         code.outerHTML = code.innerHTML;  // remove <code></code>

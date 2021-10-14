@@ -387,6 +387,8 @@ background-image: url("gb_12.jpg")
 
 ]
 
+--
+
 .pull-right[
 Data pada peubah **Agama** merupakan data kategorik (nominal), maka penyajian datanya bisa menggunakan *Pie Chart* (Diagram Lingkaran)
 
@@ -407,6 +409,8 @@ Peubah *Jenis Kelamin* juga bisa disajikan menggunakan diagram lingkaran karena 
 - ### Dapat pula digunakan untuk menyajikan data dari tabel kontingensi / tabel ringkasan data
 
 ]
+
+--
 
 .pull-right[
 
@@ -495,6 +499,14 @@ Data pada peubah **Agama** merupakan data kategorik (nominal), maka penyajian da
 
 .pull.center[
 # **Penyajian Grafik**
+
+![](gb_19.JPG)
+]
+
+---
+
+.pull.center[
+# **Penyajian Grafik**
 Histogram untuk peubah **Berat**
 
 ![](gb_16.jpg)
@@ -509,4 +521,19 @@ class: middle, center
 
 ---
 
+.pull.center[
+![](gb_20.jpg)
+]
 
+---
+
+.pull.center[
+![](gb_21.jpg)
+]
+
+---
+
+class: inverse, middle, center
+
+# .green[**Thank You**]
+# .purple[**See you next week**]

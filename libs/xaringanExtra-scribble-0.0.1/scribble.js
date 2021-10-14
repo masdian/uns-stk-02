@@ -551,6 +551,141 @@ class Scribble {
   }
 
   eraserDetectErase (ev) {
+ve', this.eraserCursorMovement)
+    document.removeEventListener('touchmove', this.eraserCursorMovement)
+
+    this.eraserCursor.classList.add('hidden')
+    this.drawBtn.classList.add('active')
+    this.eraseBtn.classList.remove('active')
+  }
+
+  stopDrawing () {
+    slideshow.resume()
+
+    this.drawMode = false
+    this.eraseMode = false
+    this.drawBtn.title = 'Start Drawing (S)'
+
+    const drawingCanvas = this.getVisibleSlideCanvasContainers()
+    drawingCanvas.forEach((container) => {
+      container.classList.remove('active', 'draw')
+    })
+
+    document.removeEventListener('keydown', this.undo)
+    document.removeEventListener('keydown', this.redo)
+    document.removeEventListener('keydown', this.setPresetColor)
+
+    this.drawBtn.classList.remove('active')
+    this.eraseBtn.classList.remove('active')
+  }
+
+  addClearing () {
+    ;['click', 'touchend'].forEach((gesture) => {
+      this.clearBtn.addEventListener(gesture, (ev) => {
+        ev.preventDefault()
+        ev.stopPropagation()
+        this.clearCurrentCanvas()
+      })
+    })
+  }
+
+  clearCurrentCanvas () {
+    this.currFabric.forEachObject((obj) => {
+      this.currFabric.remove(obj)
+    })
+  }
+
+  addErasing () {
+    ;['click', 'touchend'].forEach((gesture) => {
+      this.eraseBtn.addEventListener(gesture, (ev) => {
+        ev.preventDefault()
+        ev.stopPropagation()
+        this.eraseMode ? this.stopErasing() : this.startErasing()
+      })
+    })
+  }
+
+  eraserColor () {
+    const slide = this.getVisibleSlide().querySelector('.remark-slide-content')
+    const slideBgColor = window
+      .getComputedStyle(slide)
+      .getPropertyValue('background-color')
+
+    return this.pickContrastForegroundColor(
+      slideBgColor,
+      'rgba(255, 255, 255, 0.33)',
+      'rgba(0, 0, 0, 0.33)'
+    )
+  }
+
+  startErasing () {
+    slideshow.pause()
+
+    this.eraseMode = true
+    this.drawMode = false
+    this.eraseBtn.title = 'Stop Erasing'
+    this.eraserCursor.style.backgroundColor = this.eraserColor()
+    this.colorPicker.classList.add('hidden')
+
+    const outerDiv = this.getVisibleSlideOuterContainer()
+    outerDiv.addEventListener('mousemove', this.eraserDetectErase)
+    outerDiv.addEventListener('touchmove', this.eraserDetectErase)
+
+    document.addEventListener('mousemove', this.eraserCursorMovement)
+    document.addEventListener('touchmove', this.eraserCursorMovement)
+
+    const self = this
+    ;['mousemove', 'touchmove'].forEach(function (action) {
+      document.addEventListener(action, function (ev) {
+        self.eraserCursor.classList.remove('hidden')
+      }, { once: true })
+    })
+
+    document.addEventListener('keydown', this.undo)
+    document.addEventListener('keydown', this.redo)
+
+    this.currFabric.isDrawingMode = true
+    this.currFabric.freeDrawingBrush.width = this.tolerance
+    this.currFabric.freeDrawingBrush.color = this.transparent
+    this.currFabric.freeDrawingCursor = 'none'
+
+    const drawingCanvas = this.getVisibleSlideCanvasContainers()
+    drawingCanvas.forEach((container) => {
+      container.classList.add('active', 'erase')
+    })
+
+    this.drawBtn.classList.remove('active')
+    this.eraseBtn.classList.add('active')
+  }
+
+  stopErasing () {
+    this.drawMode = false
+    this.eraseMode = false
+    this.eraserCursor.classList.add('hidden')
+    this.eraseBtn.title = 'Erase Lines'
+
+    const outerDiv = this.getVisibleSlideOuterContainer()
+    outerDiv.removeEventListener('mousemove', this.eraserDetectErase)
+    outerDiv.removeEventListener('touchmove', this.eraserDetectErase)
+
+    document.removeEventListener('mousemove', this.eraserCursorMovement)
+    document.removeEventListener('touchmove', this.eraserCursorMovement)
+
+    document.removeEventListener('keydown', this.undo)
+    document.removeEventListener('keydown', this.redo)
+
+    const drawingCanvas = this.getVisibleSlideCanvasContainers()
+    drawingCanvas.forEach((container) => {
+      container.classList.remove('active', 'erase')
+    })
+
+    this.drawBtn.classList.remove('active')
+    this.eraseBtn.classList.remove('active')
+
+    slideshow.resume()
+  }
+
+  eraserDetectErase (ev) {
     if (this.mouseDown & this.eraseMode) {
       const xy = [
         this.currFabric.getPointer(ev).x,
@@ -648,6 +783,21 @@ Scribble.prototype.svgs = {
     '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="91.55018" y1="99.54921" x2="159.43243" y2="167.43146" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M216.00049,215.83348H72.07L34.98164,178.74517a16,16,0,0,1,0-22.62742L148.11873,42.98066a16,16,0,0,1,22.62741,0L216.001,88.2355a16,16,0,0,1,0,22.62742L111.03042,215.83347" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>',
   trash:
     '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><line x1="215.99609" y1="56" x2="39.99609" y2="56.00005" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="104" y1="104" x2="104" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="152" y1="104" x2="152" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>'
+}
+
+Scribble.prototype.defaultPresetColors = [
+  "#e51c23", // red (1)
+  "#259b24", // green (2)
+  "#9c27b0", // purple (3)
+  "#5677fc", // blue (4)
+  "#ff9800", // orange (5)
+  "#00bcd4", // cyan (6)
+  "#ffc107", // yellow (7)
+  "#009688", // teal (8)
+  "#9e9e9e", // grey (9)
+  "#212121"  // black (0)
+]
+troke-linejoin="round" stroke-width="16"></line><line x1="104" y1="104" x2="104" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="152" y1="104" x2="152" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>'
 }
 
 Scribble.prototype.defaultPresetColors = [
